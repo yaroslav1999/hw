@@ -1,12 +1,29 @@
-import React from 'react';
-import cardData from "../cardData";
+import React, { useContext } from 'react';
+
 import Card from '../card/card'
+import CardContext from '../contexts/cardContext';
 
 const CardList = () => {
-    // console.log(cardData);
+    const [cards, setCards] = useContext(CardContext);
+
+    const deleteCard=(id)=>{
+        const newCards = cards.filter((card) => card.id !== id);
+        setCards(newCards);
+        localStorage.setItem("cards", JSON.stringify(newCards));
+    }
+    const updateCard=(values)=>{
+        // console.log(values);
+        const selectedIndex = cards.reduce((acc, curr, i) => cards[acc].id == values.id ? acc : i, 0);
+        // console.log(selectedIndex);
+        const newCards = [...cards];
+        newCards[selectedIndex].title=values.title;
+        newCards[selectedIndex].body=values.body;
+        setCards(newCards);
+
+    }
     return (
         <div>
-            {cardData.map(card=> <Card key={card.id} title={card.title} body={card.body} userId={card.userId}/>)}
+            {cards.map(card=> <Card key={card.id} cardData={card} deleteCard={deleteCard} updateCard={updateCard}/>)}
         </div>
     );
 }
