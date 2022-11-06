@@ -5,6 +5,7 @@ import CardContext from '../contexts/cardContext';
 
 const CardList = () => {
     const [cards, setCards] = useContext(CardContext);
+    
 
     const deleteCard=(id)=>{
         const newCards = cards.filter((card) => card.id !== id);
@@ -18,6 +19,7 @@ const CardList = () => {
         const newCards = [...cards];
         newCards[selectedIndex].title=values.title;
         newCards[selectedIndex].body=values.body;
+        localStorage.setItem("cards", JSON.stringify(newCards));
         setCards(newCards);
 
     }

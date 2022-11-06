@@ -4,7 +4,7 @@
 }
 
 .container{
-  width: 700px;
+  width: 1250px;
   margin: 0 auto;
   display:flex;
 }
@@ -14,4 +14,32 @@
   border: 1px solid rgb(173, 173, 173);
   border-radius: 20px;
   height: 100px;
+}
+nav{
+  background: #333;
+  text-align: center;
+}
+
+nav a{
+  display: inline-block;
+  padding: 20px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+nav a.active{
+  color: #fff
+}
+
+.gallery{
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+}
+.gallery div, .gallery p{
+  width: 30%;
+  margin: 20px;
+}
+.gallery img{
+  width: 100%;
 }
